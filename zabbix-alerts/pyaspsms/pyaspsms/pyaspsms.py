@@ -61,7 +61,7 @@ def main():
     parser.add_option("-o", "--originator", dest="originator",
                       help="You can use a phone number or up to 11 Alphabetic characters.",
                       metavar="Originator")
-    parser.add_option("-r", "--recipients", dest="recipients",
+    parser.add_option("-r", "--recipients", dest="recipients", action="append",
                       help="Add Recipients as JSON Array.",
                       metavar="Recipients")
     parser.add_option("-m", "--message", dest="message",
