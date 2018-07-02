@@ -6,46 +6,46 @@ class ASPSMS():
     def __init__(self, **kwargs):
         self.options.update(kwargs)
 
-   def SendTextSMS(self, **kwargs):
-       self.options.update(kwargs)
-       requires = [
-           "UserName", "Password", "Recipients", "MessageText"
-       ]
-       optional = [
-           "Originator", "DeferredDeliveryTime", "FlashingSMS",
-           "URLBufferedMessageNotification", "URLDeliveryNotification",
-           "URLNonDeliveryNotification", "AffiliateID", "ForceGSM7bit"
-       ]
-       data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
-       if not all(map(lambda x: data.get(x, '') != '', requires)):
-           return False
-       content = requests.post("%(api)s/SendTextSMS" %(self.options), data=json.dumps(data))
-       return content
-
-   def SendSimpleTextSMS(self, **kwargs):
-       self.options.update(kwargs)
-       requires = [
-           "UserName", "Password", "Recipients", "MessageText"
-       ]
-       optional = [
-           "Originator", "ForceGSM7bit"
-       ]
-       data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
-       if not all(map(lambda x: data.get(x, '') != '', requires)):
-           return False
-       content = requests.post("%(api)s/SendSimpleTextSMS" %(self.options), data=json.dumps(data))
-       return content
-  
-   def CheckCredits(self, **kwargs):
-       self.options.update(kwargs)
-       requires = ["Username", "Password"]
-       optional = []
-       data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
-       if not all(map(lambda x: data.get(x, '') != '', requires)):
-           return False
-       content = requests.post("%(api)s/CheckCredits" %(self.options), data=json.dumps(data))
-       return content
-
+    def SendTextSMS(self, **kwargs):
+        self.options.update(kwargs)
+        requires = [
+            "UserName", "Password", "Recipients", "MessageText"
+        ]
+        optional = [
+            "Originator", "DeferredDeliveryTime", "FlashingSMS",
+            "URLBufferedMessageNotification", "URLDeliveryNotification",
+            "URLNonDeliveryNotification", "AffiliateID", "ForceGSM7bit"
+        ]
+        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
+        if not all(map(lambda x: data.get(x, '') != '', requires)):
+            return False
+        content = requests.post("%(api)s/SendTextSMS" %(self.options), data=json.dumps(data))
+        return content
+    
+    def SendSimpleTextSMS(self, **kwargs):
+        self.options.update(kwargs)
+        requires = [
+            "UserName", "Password", "Recipients", "MessageText"
+        ]
+        optional = [
+            "Originator", "ForceGSM7bit"
+        ]
+        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
+        if not all(map(lambda x: data.get(x, '') != '', requires)):
+            return False
+        content = requests.post("%(api)s/SendSimpleTextSMS" %(self.options), data=json.dumps(data))
+        return content
+    
+    def CheckCredits(self, **kwargs):
+        self.options.update(kwargs)
+        requires = ["Username", "Password"]
+        optional = []
+        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
+        if not all(map(lambda x: data.get(x, '') != '', requires)):
+            return False
+        content = requests.post("%(api)s/CheckCredits" %(self.options), data=json.dumps(data))
+        return content
+    
 def main():
     from optparse import OptionParser
     parser = OptionParser()
