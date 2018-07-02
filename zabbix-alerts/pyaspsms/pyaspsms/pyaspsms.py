@@ -94,7 +94,7 @@ def main():
             'MessageText': options.message,
             'ForceGSM7bit': options.gsm7bit
         }
-    res = ASPSMS().sender.SendSimpleTextSMS(**cfg)
+    res = ASPSMS().SendSimpleTextSMS(**cfg)
     print(res.content)
    
 if __name__ == '__main__':
