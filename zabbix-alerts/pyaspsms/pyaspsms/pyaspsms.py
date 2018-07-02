@@ -83,6 +83,8 @@ def main():
     if options.config:
         with open(options.config, 'r') as ymlfile:
             cfg = yaml.load(ymlfile)
+            cfg['MessageText'] = options.message
+            cfg['Recipients'] = options.recipients
     else:
         cfg = {
             'UserName': options.username,
