@@ -1,4 +1,4 @@
-UserName: "6GZ3EV9XXKLH"
-Password: '!Move2016'
-Originator: "Move Alerts"
+UserName: "xxxxxx"
+Password: 'xxxxxx'
+Originator: "Test"
 ForceGSM7bit: False
