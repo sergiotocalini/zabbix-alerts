@@ -47,6 +47,7 @@ class ASPSMS():
         return content
     
 def main():
+    from logging import getLogger, FileHandler, Formatter
     from optparse import OptionParser
     parser = OptionParser()
     parser.add_option("-c", "--config", dest="config",
@@ -79,6 +80,16 @@ def main():
                       help="Print status messages to stdout.",
                       metavar="Debug")
     (options, args) = parser.parse_args()
+
+    logger = getLogger('pyaspsms')
+    if options.debug:
+        handler = FileHandler('/var/log/pyaspsms.log')
+        handler.setFormatter(Formatter(
+            """%(asctime)s - %(name)s - %(levelname)s - %(message)s""",
+            "%Y-%m-%d %H:%M:%S"
+        ))
+        logger.addHandler(handler)
+        logger.setLevel('INFO')
     
     if options.config:
         with open(options.config, 'r') as ymlfile:
@@ -95,7 +106,7 @@ def main():
             'ForceGSM7bit': options.gsm7bit
         }
     res = ASPSMS().SendSimpleTextSMS(**cfg)
-    print(res.content)
+    logger.info(res.content)
    
 if __name__ == '__main__':
     main()
