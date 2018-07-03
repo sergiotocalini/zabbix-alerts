@@ -6,46 +6,112 @@ class ASPSMS():
     def __init__(self, **kwargs):
         self.options.update(kwargs)
 
+    def __do_request__(self, api, requires=[], optional=[]):
+        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
+        if not all(map(lambda x: data.get(x, '') != '', requires)):
+            return False
+        content = requests.post(api, data=json.dumps(data))
+        return content
+        
+    def CheckCredits(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/CheckCredits" %(self.options)
+        requires = ["Username", "Password"]
+        return self.__do_request__(api, requires)
+        
     def SendTextSMS(self, **kwargs):
         self.options.update(kwargs)
-        requires = [
-            "UserName", "Password", "Recipients", "MessageText"
-        ]
+        api = "%(api)s/SendTextSMS" %(self.options)
+        requires = [ "UserName", "Password", "Recipients", "MessageText" ]
         optional = [
             "Originator", "DeferredDeliveryTime", "FlashingSMS",
             "URLBufferedMessageNotification", "URLDeliveryNotification",
             "URLNonDeliveryNotification", "AffiliateID", "ForceGSM7bit"
         ]
-        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
-        if not all(map(lambda x: data.get(x, '') != '', requires)):
-            return False
-        content = requests.post("%(api)s/SendTextSMS" %(self.options), data=json.dumps(data))
-        return content
+        return self.__do_request__(api, requires, optional)
     
     def SendSimpleTextSMS(self, **kwargs):
         self.options.update(kwargs)
-        requires = [
-            "UserName", "Password", "Recipients", "MessageText"
-        ]
-        optional = [
-            "Originator", "ForceGSM7bit"
-        ]
-        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
-        if not all(map(lambda x: data.get(x, '') != '', requires)):
-            return False
-        content = requests.post("%(api)s/SendSimpleTextSMS" %(self.options), data=json.dumps(data))
-        return content
-    
-    def CheckCredits(self, **kwargs):
+        api = "%(api)s/SendSimpleTextSMS" %(self.options)
+        requires = [ "UserName", "Password", "Recipients", "MessageText" ]
+        optional = [ "Originator", "ForceGSM7bit" ]
+        return self.__do_request__(api, requires, optional)
+
+    def InquireDeliveryNotifications(self, **kwargs):
         self.options.update(kwargs)
-        requires = ["Username", "Password"]
-        optional = []
-        data = {opt:self.options[opt] for opt in self.options if opt in requires + optional}
-        if not all(map(lambda x: data.get(x, '') != '', requires)):
-            return False
-        content = requests.post("%(api)s/CheckCredits" %(self.options), data=json.dumps(data))
-        return content
-    
+        api = "%(api)s/InquireDeliveryNotifications" %(self.options)
+        requires = [ "UserName", "Password", "TransactionReferenceNumbers" ]
+        return self.__do_request__(api, requires)
+
+    def SendOriginatorUnlockCode(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/SendOriginatorUnlockCode" %(self.options)
+        requires = [ "UserName", "Password", "Originator" ]
+        return self.__do_request__(api, requires)
+
+    def UnlockOriginator(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/UnlockOriginator" %(self.options)
+        requires = [ "UserName", "Password", "Originator", "UnlockCode", "AffiliateID" ]
+        return self.__do_request__(api, requires)
+
+    def CheckOriginatorAuthorization(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/CheckOriginatorAuthorization" %(self.options)
+        requires = [ "UserName", "Password", "Originator" ]
+        return self.__do_request__(api, requires)
+
+    def SendTokenSMS(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/SendTokenSMS" %(self.options)
+        requires = [
+            "UserName", "Password", "Originator", "Recipients", "VerificationCode"
+        ]
+        options = [
+            "MessageData", "TokenValidity", "TokenMask", "TokenReference",
+            "TokenCaseSensitive", "URLBufferedMessageNotification", "URLDeliveryNotification",
+            "URLNonDeliveryNotification", "AffiliateID"
+        ]
+        return self.__do_request__(api, requires, optional)
+
+    def VerifyToken(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/VerifyToken" %(self.options)
+        requires = [
+            "UserName", "Password", "PhoneNumber", "TokenReference", "VerificationCode"
+        ]
+        return self.__do_request__(api, requires)
+
+    def CreateVoucher(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/CreateVoucher" %(self.options)
+        requires = [
+            "UserName", "Password", "NumberOfVouchers", "AmountCreditsPerVoucher", "Remarks"
+        ]
+        return self.__do_request__(api, requires)    
+
+    def GetVoucherTransactions(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/GetVoucherTransactions" %(self.options)
+        requires = [ "UserName", "Password" ]
+        return self.__do_request__(api, requires)    
+
+    def RedeemVoucher(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/RedeemVoucher" %(self.options)
+        requires = [ "UserName", "Password" ]
+        return self.__do_request__(api, requires)
+
+    def VersionInfo(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/VersionInfo" %(self.options)
+        return self.__do_request__(api)
+
+    def ListAllStatusCodes(self, **kwargs):
+        self.options.update(kwargs)
+        api = "%(api)s/ListAllStatusCodes" %(self.options)
+        return self.__do_request__(api)
+
 def main():
     from logging import getLogger, FileHandler, Formatter
     from optparse import OptionParser
