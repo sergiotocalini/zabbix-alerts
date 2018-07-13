@@ -7,7 +7,7 @@ The installation process is very simple you just need to copy the pyaspsms.py to
 
 ## Python Library
 This script also can be used as a python library and there is a setup.py that give you the chance to install in the python path.
-``` python
+```
 #~ git clone https://github.com/sergiotocalini/zabbix-alerts.git
 #~ cd zabbix-alerts/pyaspsms
 #~ pip install .
