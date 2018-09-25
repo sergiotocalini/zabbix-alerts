@@ -15,9 +15,9 @@ class WebHooks():
 
     def send_message(self, **kwargs):
         self.options.update(kwargs)
-	r = requests.post(
+	return requests.post(
             self.options['hookurl'],
-            json=json.dumps(self.options['payload']),
+            json=self.options['payload'],
             headers=self.options['headers']
         )
-        return r
+    
