@@ -25,14 +25,13 @@ def main():
     )
     
     opts, args = parser.parse_args()
-    options = vars(opts)
-
-    if 'webhooks' == options['action']:
+    if 'webhooks' == opts.action:
         wh = WebHooks(
-            hookurl = options['url'],
-            payload = json.loads(options['payload'])
+            hookurl = opts.url,
+            payload = json.loads(opts.payload)
         )
         r = wh.send_message()
+        print(r.content)
 
 if __name__ == '__main__':
     main()
