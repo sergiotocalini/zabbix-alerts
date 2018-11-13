@@ -4,6 +4,6 @@ APP_DIR=$(dirname $0)
 
 webhook="${1}"
 incomming="${2}"
-payload="${3}"
+payload=`echo "${3}" | jq -c . 2>/dev/null`
 
-pyteams --url="https://outlook.office.com/webhook/${webhook}/IncomingWebhook/${incomming}" --payload="${payload}"
+[[ -n ${payload} ]] && pyteams --url="https://outlook.office.com/webhook/${webhook}/IncomingWebhook/${incomming}" --payload="${payload}"
