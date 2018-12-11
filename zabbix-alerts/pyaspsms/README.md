@@ -1,6 +1,5 @@
 # pyaspsms
-This is a python library and a handler script who allows you to send SMS message using the provider ASPSMS (see the link in references)
-The installation process is very simple you just need to copy the pyaspsms.py to your zabbix server alertscript directory and restart the zabbix-server service.
+This is a python library and a handler script which allows you to send SMS message using the provider ASPSMS (see the link in references).
 
 ## Python Library
 This script also can be used as a python library and there is a setup.py that give you the chance to install in the python path.
