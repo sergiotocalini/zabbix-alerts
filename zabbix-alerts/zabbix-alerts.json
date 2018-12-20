@@ -1,0 +1,34 @@
+{
+    "opsgenie": {
+	"priority": {
+	    "0": {
+		"code": "P5",
+		"name": "P5-Informational"
+	    },
+	    "1": {
+		"code": "P5",
+		"name": "P5-Informational"
+	    },
+	    "2": {
+		"code": "P4",
+		"name": "P4-Low"
+	    },
+	    "3": {
+		"code": "P3",
+		"name": "P3-Moderate"
+	    },
+	    "4": {
+		"code": "P2",
+		"name": "P2-High"
+	    },
+	    "5": {
+		"code": "P1",
+		"name": "P1-Critical"
+	    },
+	    "default": {
+		"code": "P3",
+		"name": "P3-Moderate"
+	    }
+	}
+    }
+}
