@@ -80,13 +80,21 @@ for i in "${@}"; do
 	--event-tags=*)
 	    EVENT_TAGS="${i#*=}"
 	    ;;
-	--time=*)
-	    TIME="${i#*=}"
+	--event-recovery-date=*)
+	    EVENT_RECOVERY_DATE="${i#*=}"
+	    ;;
+	--event-recovery-time=*)
+	    EVENT_RECOVERY_TIME="${i#*=}"
+	    ;;
+	--event-recovery-tags=*)
+	    EVENT_RECOVERY_TAGS="${i#*=}"
 	    ;;
 	--time=*)
 	    TIME="${i#*=}"
 	    ;;
-
+	--time=*)
+	    TIME="${i#*=}"
+	    ;;	
 	--host-name=*)
 	    HOST_NAME="${i#*=}"
 	    ;;
@@ -99,4 +107,4 @@ for i in "${@}"; do
     esac
 done
 
-echo "${CHANNEL} -- ${HOST_NAME} -- ${EVENT_DATE} -- ${EVENT_TIME} -- ${EVENT_STATUS}" >> ./zabbix-alerts.log
+echo "${CHANNEL} -- ${HOST_NAME} -- ${EVENT_DATE} -- ${EVENT_TIME} -- ${EVENT_STATUS} -- ${EVENT_RECOVERY_DATE} -- ${EVENT_RECOVERY_TIME} - ${EVENT_RECOVERY_STATUS}" >> /var/log/zabbix/zabbix-alerts.log
