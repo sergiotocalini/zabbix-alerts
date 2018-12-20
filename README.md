@@ -1,40 +1,13 @@
 # zabbix-alerts
 Zabbix Server - Alerts Scripts
 
-# pyaspsms
-This script allows you to send SMS message using the provider ASPSMS (see the link in references)
-The installation process is very simple you just need to copy the pyaspsms.py to your zabbix server alertscript directory and restart the zabbix-server service.
+This repository has several channels to integrate zabbix actions.
 
-## Python Library
-This script also can be used as a python library and there is a setup.py that give you the chance to install in the python path.
-```
-#~ git clone https://github.com/sergiotocalini/zabbix-alerts.git
-#~ cd zabbix-alerts/pyaspsms
-#~ pip install .
-#~ pyaspsms -h
-Usage: pyaspsms.py [options]
+# Channels
+## SMS
+* ASPSMS: [pyaspsms](https://github.com/sergiotocalini/zabbix-alerts/tree/master/zabbix-alerts/pyaspsms)
 
-Options:
-  -h, --help            show this help message and exit
-  -c ConfigFile, --config=ConfigFile
-                        Your ASPSMS configurations.
-  -u UserName, --username=UserName
-                        Your ASPSMS Userkey.
-  -p Password, --password=Password
-                        Your ASPSMS Password.
-  -o Originator, --originator=Originator
-                        You can use a phone number or up to 11 Alphabetic
-                        characters.
-  -r Recipients, --recipients=Recipients
-                        Add Recipients as JSON Array.
-  -m MessageText, --message=MessageText
-                        The message text property accepts UTF8 encoding.
-  -g, --gsm7bit                                Force sending GSM7bit
-                        characters only to avoid extra cost by acidentally
-                        using Unicode Characters.
-  -d, --debug           Print status messages to stdout.
-#~
-```
+## Webhooks
+* Microsoft Teams: [pyteams](https://github.com/sergiotocalini/zabbix-alerts/tree/master/zabbix-alerts/pyteams)
 
-# References
-* ASPSMS ( https://www.aspsms.com/ )
+
