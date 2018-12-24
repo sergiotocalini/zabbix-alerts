@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "channels": [ 
+    { "type": "zabbix2opsgenie",
+      "enable": true
+    },
+    { "type": "opsgenie",
+      "enable": false,
+      "api": { 
+        "key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "url": "https://api.eu.opsgenie.com/v1/json/zabbix"
+      }
+    }
+  ]
+}

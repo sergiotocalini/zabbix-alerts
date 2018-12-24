@@ -1,0 +1,2 @@
+NOTIFY=""
+LOG_FILE="/var/log/zabbix/zabbix-alerts.log"
