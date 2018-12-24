@@ -11,9 +11,9 @@ mkdir -p "${PREFIX_DIR}/profile.d" "${PREFIX_DIR}/templates" 2>/dev/null
 SCRIPT_CONFIG="${PREFIX_DIR}/zabbix-alerts.conf"
 [[ -f ${SCRIPT_CONFIG} ]] && SCRIPT_CONFIG="${SCRIPT_CONFIG}.new"
 
-cp -rp ${SOURCE_DIR}/zabbix-alerts.conf.example     ${SCRIPT_CONFIG}
-cp -rp ${SOURCE_DIR}/profile.d/example.json.save    ${GUNICORN_DIR}/profile.d/example.json.save
-cp -rp ${SOURCE_DIR}/templates/*                    ${GUNICORN_DIR}/templates/
+cp -rp ${SOURCE_DIR}/zabbix-alerts/zabbix-alerts.conf.example     ${SCRIPT_CONFIG}
+cp -rp ${SOURCE_DIR}/zabbix-alerts/profile.d/example.json.save    ${GUNICORN_DIR}/profile.d/example.json.save
+cp -rp ${SOURCE_DIR}/zabbix-alerts/templates/*                    ${GUNICORN_DIR}/templates/
 
 chown -R zabbix: "${PREFIX_DIR}"
 chmod -R 755     "${PREFIX_DIR}"
