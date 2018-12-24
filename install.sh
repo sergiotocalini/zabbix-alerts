@@ -11,6 +11,8 @@ mkdir -p "${PREFIX_DIR}/profile.d" "${PREFIX_DIR}/templates" 2>/dev/null
 SCRIPT_CONFIG="${PREFIX_DIR}/zabbix-alerts.conf"
 [[ -f ${SCRIPT_CONFIG} ]] && SCRIPT_CONFIG="${SCRIPT_CONFIG}.new"
 
+cp -rp ${SOURCE_DIR}/LICENSE                                      ${PREFIX_DIR}/LICENSE
+cp -rp ${SOURCE_DIR}/README.md                                    ${PREFIX_DIR}/README.md
 cp -rp ${SOURCE_DIR}/zabbix-alerts/zabbix-alerts.sh               ${PREFIX_DIR}/zabbix-alerts.sh
 cp -rp ${SOURCE_DIR}/zabbix-alerts/zabbix-alerts.conf.example     ${SCRIPT_CONFIG}
 cp -rp ${SOURCE_DIR}/zabbix-alerts/mapper.json                    ${PREFIX_DIR}/mapper.json
