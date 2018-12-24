@@ -13,6 +13,8 @@ SCRIPT_CONFIG="${PREFIX_DIR}/zabbix-alerts.conf"
 
 cp -rp ${SOURCE_DIR}/zabbix-alerts/zabbix-alerts.sh               ${PREFIX_DIR}/zabbix-alerts.sh
 cp -rp ${SOURCE_DIR}/zabbix-alerts/zabbix-alerts.conf.example     ${SCRIPT_CONFIG}
+cp -rp ${SOURCE_DIR}/zabbix-alerts/mapper.json                    ${PREFIX_DIR}/mapper.json
+cp -rp ${SOURCE_DIR}/zabbix-alerts/actionCommand.txt              ${PREFIX_DIR}/actionCommand.txt
 cp -rp ${SOURCE_DIR}/zabbix-alerts/profile.d/example.json.save    ${PREFIX_DIR}/profile.d/example.json.save
 cp -rp ${SOURCE_DIR}/zabbix-alerts/templates/*                    ${PREFIX_DIR}/templates/
 
