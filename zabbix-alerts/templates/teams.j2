@@ -1,18 +1,18 @@
 {
    "@type": "MessageCard",
    "@context": "http://schema.org/extensions",
-   "summary": "{TRIGGER_STATUS}:{HOST_NAME}:{TRIGGER_NAME}",
-   "title": "{HOST_NAME}",
+   "summary": "{{ TRIGGER_STATUS }}:{{ HOST_NAME }}:{{ TRIGGER_NAME }}",
+   "title": "{{ HOST_NAME }}",
    "themeColor": "af4244",
    "sections": [
       {
-         "activityTitle": "{TRIGGER_NAME}",
-         "activitySubtitle": "{TRIGGER_STATUS}",
-         "activityText": "{TRIGGER_SEVERITY}",
-         "activityImage": "{ACTIVITY_IMAGE}",
+         "activityTitle": "{{ TRIGGER_NAME }}",
+         "activitySubtitle": "{{ TRIGGER_STATUS }}",
+         "activityText": "{{ TRIGGER_SEVERITY }}",
+         "activityImage": "{{ ACTIVITY_IMAGE }}",
          "facts": [
-            { "name": "Time", "value": "{EVENT_DATE} {EVENT_TIME}" },
-            { "name": "Event", "value": "{EVENT_ID}" }
+            { "name": "Time", "value": "{{ EVENT_DATE }} {{ EVENT_TIME }}" },
+            { "name": "Event", "value": "{{ EVENT_ID }}" }
          ]
       }
    ],
@@ -22,7 +22,7 @@
          "name": "Open",
          "@type": "ViewAction",
          "target": [ 
-            "{ZABBIX_URL}/tr_events.php?triggerid={TRIGGER_ID}&eventid={EVENT_ID}"
+            "{{ ZABBIX_URL }}/tr_events.php?triggerid={{ TRIGGER_ID }}&eventid={{ EVENT_ID }}"
          ]
       }
    ]
