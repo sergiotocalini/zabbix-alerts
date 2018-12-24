@@ -1,7 +1,7 @@
 #!/usr/bin/env ksh
 SOURCE_DIR=$(dirname $0)
 ZABBIX_DIR=/etc/zabbix
-PREFIX_DIR="${ZABBIX_DIR}/scripts/server/zabbix-alerts"
+PREFIX_DIR="${ZABBIX_DIR}/scripts/server/alertscripts/zabbix-alerts"
 
 LOG_FILE="${1:-/var/log/zabbix/zabbix-alerts.log}"
 NOTIFY="${2}"
