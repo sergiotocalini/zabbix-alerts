@@ -240,8 +240,8 @@ IFS=${IFS_DEFAULT}
 IFS=", " EVENT_TAGS=( ${EVENT_TAGS} )
 IFS=${IFS_DEFAULT}
 
-TAGS[0]="site:${INV_HW_SITE:-UNKNOWN}"
-TAGS[1]="env:${INV_SW_ENV:-UNKNOWN}"
+[[ -n ${INV_HW_SITE} ]] && TAGS[${#TAGS[@]}]="site:${INV_HW_SITE:-UNKNOWN}"
+[[ -n ${INV_SW_ENV} ]] && TAGS[${#TAGS[@]}]="env:${INV_SW_ENV:-UNKNOWN}"
 for t in ${!EVENT_TAGS[@]}; do
     IFS=":" values=( ${EVENT_TAGS[${t}]} )
     IFS=${IFS_DEFAULT}
