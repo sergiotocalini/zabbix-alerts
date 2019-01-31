@@ -85,11 +85,12 @@ ifArrayHas() {
 #  Main loop
 # -----------
 #
-
+JSON=""
 for i in "${@}"; do
     case ${i} in
 	--profile=*|--channel-profile=*)
 	    CHANNEL_PROFILE="${i#*=}"
+	    JSON=`echo "${JSON}" | jq ".CHANNEL_PROFILE=\"${CHANNEL_PROFILE}\"" 2>/dev/null`
 	    ;;	
 	--channel-type=*)
 	    CHANNEL_TYPE="${i#*=}"
@@ -262,7 +263,7 @@ for t in ${!EVENT_TAGS[@]}; do
     done
 done
 
-echo "${DATE} ${TIME} -- ${INV_HW_SITE:-UNKNOWN} -- ${INV_SW_ENV:-UNKNOWN} -- ${HOST_NAME} -- ${EVENT_STATUS} -- ${EVENT_AGE} -- ${TRIGGER_NAME} -- ${ZABBIX_URL}/tr_events.php?triggerid=${TRIGGER_ID}&eventid=${EVENT_ID}" >> "${LOG_FILE}"
+echo "${DATE} ${TIME} -- ${INV_HW_SITE:-UNKNOWN} -- ${INV_SW_ENV:-UNKNOWN} -- ${HOST_NAME} -- ${EVENT_STATUS} -- ${EVENT_AGE} -- ${TRIGGER_NAME} -- ${ZABBIX_URL}/tr_events.php?triggerid=${TRIGGER_ID}&eventid=${EVENT_ID} -- ${JSON}">> "${LOG_FILE}"
 
 if [[ ${CHANNEL_TYPE:-zabbix2opsgenie} =~ (opsgenie|zabbix2opsgenie) ]]; then
     OPSGENIE_PRIORITY=`jq -r ".opsgenie.priority.\"${TRIGGER_NSEVERITY}\".code" ${APP_DIR}/mapper.json 2>/dev/null`
@@ -288,4 +289,6 @@ if [[ ${CHANNEL_TYPE:-zabbix2opsgenie} == "zabbix2opsgenie" ]]; then
 				  -recoveryEventStatus="${EVENT_RECOVERY_STATUS}" \
 				  -tags="`join ', ' ${TAGS[@]}`" \
 				  -teams="`join ',' ${NOTIFY[@]}`"
+elif [[ ${CHANNEL_TYPE} == "teams" ]]; then
+    values 
 fi

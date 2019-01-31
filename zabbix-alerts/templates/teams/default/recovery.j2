@@ -3,16 +3,17 @@
    "@context": "http://schema.org/extensions",
    "summary": "{{ TRIGGER_STATUS }}:{{ HOST_NAME }}:{{ TRIGGER_NAME }}",
    "title": "{{ HOST_NAME }}",
-   "themeColor": "af4244",
+   "themeColor": "{{ ACTION_COLOR | default('538203') }}",
    "sections": [
       {
          "activityTitle": "{{ TRIGGER_NAME }}",
          "activitySubtitle": "{{ TRIGGER_STATUS }}",
          "activityText": "{{ TRIGGER_SEVERITY }}",
-         "activityImage": "{{ ACTIVITY_IMAGE }}",
+         "activityImage": "{{ ACTION_IMAGE | default('') }}",
          "facts": [
-            { "name": "Time", "value": "{{ EVENT_DATE }} {{ EVENT_TIME }}" },
-            { "name": "Event", "value": "{{ EVENT_ID }}" }
+            { "name": "Start", "value": "{{ EVENT_DATE }} {{ EVENT_TIME }}" },
+	    { "name": "End", "value": "{{ EVENT_RECOVERY_DATE }} {{ EVENT_RECOVERY_TIME }}" },
+	    { "name": "Age", "value": "{{ EVENT_AGE }}" }
          ]
       }
    ],

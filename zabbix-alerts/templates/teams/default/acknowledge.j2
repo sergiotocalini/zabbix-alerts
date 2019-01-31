@@ -1,0 +1,35 @@
+{
+   "@type": "MessageCard",
+   "@context": "http://schema.org/extensions",
+   "summary": "{{ TRIGGER_STATUS }}:{{ HOST_NAME }}:{{ TRIGGER_NAME }}",
+   "title": "{{ HOST_NAME }}",
+   "themeColor": "{{ ACTION_COLOR | default('f4b342') }}",
+   "sections": [
+      {
+         "activityTitle": "{{ TRIGGER_NAME }}",
+         "activitySubtitle": "{{ TRIGGER_STATUS }}",
+         "activityText": "{{ TRIGGER_SEVERITY }}",
+         "activityImage": "{{ ACTION_IMAGE | default('') }}",
+         "facts": [
+            { "name": "Start", "value": "{{ EVENT_DATE }} {{ EVENT_TIME }}" },
+	    { "name": "Acknowledged", "value": "{{ ACK_DATE }} {{ ACK_TIME }}" },
+	    { "name": "Age", "value": "{{ EVENT_AGE }}" }
+         ]
+      },
+      {
+        "startGroup": true,
+	"activityTitle": "Message",
+	"activitySubtitle" : "{{ ACK_MESSAGE }}",
+      }      
+   ],
+   "potentialAction": [
+      {
+         "@context": "http://schema.org",
+         "name": "Open",
+         "@type": "ViewAction",
+         "target": [ 
+            "{{ ZABBIX_URL }}/tr_events.php?triggerid={{ TRIGGER_ID }}&eventid={{ EVENT_ID }}"
+         ]
+      }
+   ]
+}
