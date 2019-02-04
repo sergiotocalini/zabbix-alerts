@@ -117,6 +117,14 @@ for i in "${@}"; do
 	    CHANNEL_API_PASSWORD="${i#*=}"
 	    JSON=`echo "${JSON}" | jq -c  ".CHANNEL_API_PASSWORD=\"${CHANNEL_API_PASSWORD}\"" 2>/dev/null`	    
 	    ;;
+	--action-color=*)
+	    ACTION_COLOR="${i#*=}"
+	    JSON=`echo "${JSON}" | jq -c  ".ACTION_COLOR=\"${ACTION_COLOR}\"" 2>/dev/null`
+	    ;;
+	--action-image=*)
+	    ACTION_IMAGE="${i#*=}"
+	    JSON=`echo "${JSON}" | jq -c  ".ACTION_IMAGE=\"${ACTION_IMAGE}\"" 2>/dev/null`	    
+	    ;;
 	--payload=*)
 	    PAYLOAD="${i#*=}"	    
 	    ;;
