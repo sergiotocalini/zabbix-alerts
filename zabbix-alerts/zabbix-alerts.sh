@@ -320,7 +320,7 @@ for t in ${!EVENT_TAGS[@]}; do
     done
 done
 
-echo "${DATE} ${TIME} -- ${INV_HW_SITE:-UNKNOWN} -- ${INV_SW_ENV:-UNKNOWN} -- ${HOST_NAME} -- ${EVENT_STATUS} -- ${EVENT_AGE} -- \"${TRIGGER_NAME}\" -- ${ZABBIX_URL}/tr_events.php?triggerid=${TRIGGER_ID}&eventid=${EVENT_ID}">> "${LOG_FILE}"
+echo "${DATE} ${TIME} -- ${INV_HW_SITE:-UNKNOWN} -- ${INV_SW_ENV:-UNKNOWN} -- ${HOST_NAME} -- ${EVENT_STATUS} -- ${EVENT_AGE} -- \"${TRIGGER_NAME}\"">> "${LOG_FILE}"
 
 if [[ ${CHANNEL_TYPE:-zabbix2opsgenie} =~ (opsgenie|zabbix2opsgenie) ]]; then
     OPSGENIE_PRIORITY=`jq -r ".opsgenie.priority.\"${TRIGGER_NSEVERITY}\".code" ${APP_DIR}/mapper.json 2>/dev/null`
