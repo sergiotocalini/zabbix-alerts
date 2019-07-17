@@ -19,10 +19,8 @@ This repository has several channels to integrate zabbix actions.
 # Deploy
 ```
 ~# git clone https://github.com/sergiotocalini/zabbix-alerts
-~# cd zabbix-alerts
-~# pip install -r requirements.txt
 ~# DEFAULT_TEAMS="devops:developers"
-~# ./install.sh "/var/log/zabbix/zabbix-alerts.log" "${DEFAULT_TEAMS}"
+~# ./zabbix-alerts/install.sh "/var/log/zabbix/zabbix-alerts.log" "${DEFAULT_TEAMS}"
 ```
 
 # How to use it
@@ -38,9 +36,10 @@ This repository has several channels to integrate zabbix actions.
        --event-time='{EVENT.TIME}' --event-recovery-date='{EVENT.RECOVERY.DATE}' \
        --event-recovery-id='{EVENT.RECOVERY.ID}' --event-recovery-status='{EVENT.RECOVERY.STATUS}' \
        --event-recovery-value='{EVENT.RECOVERY.VALUE}' --event-recovery-time='{EVENT.RECOVERY.TIME}' \
-       --item-id='{ITEM.ID}' --item-key="{ITEM.KEY}" --item-value='{ITEM.VALUE}' --trigger-value='{TRIGGER.VALUE}' \
-       --trigger-description="{TRIGGER.DESCRIPTION}" --trigger-hostgroup-name='{TRIGGER.HOSTGROUP.NAME}' \
-       --trigger-id='{TRIGGER.ID}' --trigger-name="{TRIGGER.NAME}" --trigger-severity='{TRIGGER.SEVERITY}' \
+       --item-id='{ITEM.ID}' --item-key="{ITEM.KEY}" --item-value='{ITEM.VALUE}' \
+       --trigger-value='{TRIGGER.VALUE}' --trigger-description="{TRIGGER.DESCRIPTION}" \
+       --trigger-hostgroup-name='{TRIGGER.HOSTGROUP.NAME}' --trigger-id='{TRIGGER.ID}' \
+       --trigger-name="{TRIGGER.NAME}" --trigger-severity='{TRIGGER.SEVERITY}' \
        --trigger-nseverity='{TRIGGER.NSEVERITY}' --trigger-status='{TRIGGER.STATUS}' --trigger-url="{TRIGGER.URL}" \
        --inventory-hardware-full='{INVENTORY.HARDWARE.FULL}' --inventory-software-full='{INVENTORY.SOFTWARE.FULL}' \
        --zabbix-url="{$ZABBIX_URL}" --ack-date='{ACK.DATE}' --ack-time='{ACK.TIME}' --ack-message='{ACK.MESSAGE}' \
