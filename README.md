@@ -5,9 +5,9 @@ This repository has several channels to integrate zabbix actions.
 
 # Channels
 ## SMS
-* ASPSMS: [pyaspsms](https://github.com/sergiotocalini/zabbix-alerts/tree/master/zabbix-alerts/pyaspsms)
+* ASPSMS: [pyaspsms](https://github.com/sergiotocalini/pyaspsms)
 
 ## Webhooks
-* Microsoft Teams: [pyteams](https://github.com/sergiotocalini/zabbix-alerts/tree/master/zabbix-alerts/pyteams)
+* Microsoft Teams: [pyteams](https://github.com/sergiotocalini/pyteams)
 
 
