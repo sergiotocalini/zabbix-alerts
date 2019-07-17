@@ -35,4 +35,4 @@ if [[ ${SCRIPT_CONFIG} =~ .*.new$ ]]; then
     fi
 fi
 
-
+pip install -r ${SOURCE_DIR}/requirements.txt
